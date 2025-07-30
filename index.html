@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IP Canvas Grade Calculator</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <!-- Top navigation bar with logo and title -->
+  <header class="navbar">
+    <div class="navbar-content">
+      <img src="logo_ip.png" alt="IP logo" class="logo">
+      <span class="title">Canvas Grade Calculator</span>
+    </div>
+  </header>
+  <main class="main-content">
+    <!-- Step 1: Import assignments/grades -->
+    <details id="step1" class="panel" open>
+      <summary class="panel-header">Step&nbsp;1: Copy‑paste your assignments from Canvas</summary>
+      <div class="panel-body">
+        <p>Go to the <strong>Assignments</strong> page in your Canvas course. In the upper right, set <em>Show by Type</em>. Select all the text on the page and copy it (Ctrl/Cmd + A then Ctrl/Cmd + C). Paste it into the left box below. Optionally, copy all text from the <strong>Grades</strong> page (click <em>Show All Details</em> first) and paste it into the right box to include statistics.</p>
+        <div class="import-boxes">
+          <div class="import-column">
+            <label for="assignments-input">Assignments</label>
+            <textarea id="assignments-input" placeholder="Paste the assignments page here..."></textarea>
+          </div>
+          <div class="import-column">
+            <label for="grades-input">Grades <span class="optional-label">(optional)</span></label>
+            <textarea id="grades-input" placeholder="Paste the grades page here..."></textarea>
+          </div>
+        </div>
+        <button id="parse-btn" class="primary">Submit</button>
+      </div>
+    </details>
+    <!-- Step 2: Modify grades and calculate totals -->
+    <details id="step2" class="panel" open style="display:none;">
+      <summary class="panel-header">Step&nbsp;2: Modify your grades and calculate totals</summary>
+      <div class="panel-body">
+        <p>Your assignments are listed by category below. Edit assignment names and scores as you wish; totals update automatically. You can also adjust category weights. Use the “Add assignment” and “Add category” buttons to customise further.</p>
+        <div id="categories-container"></div>
+        <div id="weighting-summary" class="weighting-summary">
+          <h3>Total Grade: <span id="total-grade-display">0.00%</span></h3>
+          <p id="total-weight-display">Total weighting: 0%</p>
+          <button id="add-category-btn" class="primary">Add category</button>
+        </div>
+        <div id="calc-points" class="calc-points">
+          <h3>Calculate points</h3>
+          <div class="calc-grid">
+            <label for="calc-total-points">New Assignment Points:</label>
+            <input type="number" id="calc-total-points" min="1" placeholder="e.g. 100">
+            <label for="calc-target">Target Grade Percentage:</label>
+            <input type="number" id="calc-target" min="0" max="100" placeholder="e.g. 90">
+            <label for="calc-category">Category:</label>
+            <select id="calc-category"></select>
+          </div>
+          <button id="calc-btn" class="primary">Calculate</button>
+          <div id="calc-result" class="calc-result"></div>
+        </div>
+        <button id="back-btn" class="secondary">Back</button>
+      </div>
+    </details>
+  </main>
+</body>
+</html>

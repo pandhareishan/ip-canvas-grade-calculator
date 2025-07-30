@@ -1,0 +1,349 @@
+/* IP Canvas Grade Calculator Styles */
+
+/* Color palette */
+:root {
+  --bg: #0d0d0d;
+  --panel-bg: #1c1c1e;
+  --primary: #6c63ff;
+  --primary-dark: #594fdc;
+  --secondary: #2e2e3d;
+  --text: #ffffff;
+  --muted: #b5b5c3;
+  --border: #3a3a49;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  overflow-y: scroll;
+}
+
+/* Navigation bar */
+.navbar {
+  background-color: var(--panel-bg);
+  border-bottom: 1px solid var(--border);
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-content {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 36px;
+  height: 36px;
+  margin-right: 10px;
+}
+
+.title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+/* Main layout */
+.main-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Panel styling (details/summary) */
+.panel {
+  background-color: var(--panel-bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.panel-header {
+  padding: 15px 20px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  background-color: var(--secondary);
+  color: var(--primary);
+  user-select: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.panel-header::-webkit-details-marker {
+  display: none;
+}
+
+details[open] > .panel-header::after {
+  content: '▲';
+  font-size: 0.8rem;
+  color: var(--primary);
+}
+
+details:not([open]) > .panel-header::after {
+  content: '▼';
+  font-size: 0.8rem;
+  color: var(--primary);
+}
+
+.panel-body {
+  padding: 20px;
+  border-top: 1px solid var(--border);
+}
+
+/* Import boxes */
+.import-boxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.import-column {
+  flex: 1;
+  min-width: 260px;
+  display: flex;
+  flex-direction: column;
+}
+
+.import-column label {
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.optional-label {
+  font-weight: normal;
+  font-style: italic;
+  color: var(--muted);
+}
+
+textarea {
+  width: 100%;
+  min-height: 150px;
+  padding: 10px;
+  background-color: var(--secondary);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  resize: vertical;
+}
+
+textarea::placeholder {
+  color: var(--muted);
+}
+
+/* Buttons */
+.primary {
+  background-color: var(--primary);
+  color: var(--text);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.primary:hover {
+  background-color: var(--primary-dark);
+}
+
+.secondary {
+  background-color: transparent;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 20px;
+}
+
+.secondary:hover {
+  background-color: var(--primary-dark);
+  color: var(--text);
+  border-color: var(--primary-dark);
+}
+
+/* Categories list */
+#categories-container {
+  margin-top: 20px;
+}
+
+.category-card {
+  background-color: var(--secondary);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  margin-bottom: 15px;
+  padding: 15px;
+}
+
+.category-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.category-header input[type="text"] {
+  flex: 1;
+  margin-right: 10px;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  font-size: 1rem;
+  padding: 4px;
+}
+
+.category-header input[type="text"]:focus {
+  outline: none;
+  border-bottom-color: var(--primary);
+}
+
+.category-header input[type="number"] {
+  width: 70px;
+  margin-right: 5px;
+  background-color: var(--secondary);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 4px;
+  padding: 4px;
+}
+
+.category-header input[type="number"]:focus {
+  border-color: var(--primary);
+  outline: none;
+}
+
+.category-header .delete-category {
+  background: transparent;
+  color: #e57373;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.assignment-list {
+  margin-left: 15px;
+}
+
+.assignment-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.assignment-item input[type="text"] {
+  flex: 1;
+  margin-right: 10px;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  padding: 4px;
+}
+
+.assignment-item input[type="text"]:focus {
+  outline: none;
+  border-bottom-color: var(--primary);
+}
+
+.assignment-item input[type="number"] {
+  width: 60px;
+  margin-right: 4px;
+  background-color: var(--secondary);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 4px;
+  padding: 4px;
+}
+
+.assignment-item input[type="number"]:focus {
+  border-color: var(--primary);
+  outline: none;
+}
+
+.assignment-item .delete-assignment {
+  background: transparent;
+  border: none;
+  color: #e57373;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.add-assignment-btn {
+  margin-top: 5px;
+  padding: 6px 12px;
+  background-color: var(--primary);
+  border: none;
+  border-radius: 4px;
+  color: var(--text);
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.add-assignment-btn:hover {
+  background-color: var(--primary-dark);
+}
+
+/* Weighting summary */
+.weighting-summary {
+  margin-top: 30px;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  padding-top: 20px;
+}
+
+/* Calculate points section */
+.calc-points {
+  margin-top: 30px;
+  border-top: 1px solid var(--border);
+  padding-top: 20px;
+}
+
+.calc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 10px;
+  align-items: end;
+  margin-bottom: 10px;
+}
+
+.calc-grid label {
+  font-size: 0.9rem;
+  color: var(--primary);
+}
+
+.calc-grid input,
+.calc-grid select {
+  width: 100%;
+  padding: 6px;
+  background-color: var(--secondary);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+
+.calc-grid input:focus,
+.calc-grid select:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.calc-result {
+  margin-top: 10px;
+  font-weight: 500;
+  color: var(--muted);
+}
